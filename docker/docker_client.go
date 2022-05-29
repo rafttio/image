@@ -761,7 +761,7 @@ func (c *dockerClient) detectPropertiesHelper(ctx context.Context) error {
 		err = ping("http")
 	}
 	if err != nil {
-		err = errors.Wrapf(err, "pinging container registry %s", c.registry)
+		err = errors.WithMessagef(err, "pinging container registry %s", c.registry)
 		if c.sys != nil && c.sys.DockerDisableV1Ping {
 			return err
 		}
